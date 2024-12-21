@@ -9,8 +9,9 @@ def index():
     moon = ephem.Moon()
     moon.compute()
     moon_phase = round(moon.phase)
+    moon_phase_angle = moon_phase * 3.6  # 360 degrees / 100%
     moon_phase_text = get_moon_phase_text(moon_phase)
-    return template('index.html', moon_phase=moon_phase, moon_phase_text=moon_phase_text)
+    return template('index.html', moon_phase=moon_phase, moon_phase_angle=moon_phase_angle, moon_phase_text=moon_phase_text)
 
 def get_moon_phase_text(moon_phase):
     if moon_phase == 0:
